@@ -20,11 +20,11 @@ export class SidebarComponent {
   ngOnInit(){
     this.service.getCards().subscribe(resp => {
        this.card = resp.data;
-       console.log(resp);
+       console.log(resp.data);
     })
     this.service.getSets().subscribe(resp => {
       this.card = resp.data;
-      console.log(resp);
+      console.log(resp.data);
    })
   }
 

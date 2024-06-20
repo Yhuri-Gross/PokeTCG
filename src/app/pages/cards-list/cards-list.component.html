@@ -1,1 +1,11 @@
-<p>cards-list works!</p>
+<input type="text" class="form-control mb-3" placeholder="Search cards...">
+<div class="card-columns">
+  <div class="card" *ngFor="let card of cards">
+    <div class="card-body">
+      <h5 class="card-title">{{ card.name }}</h5>
+      <p class="card-text">{{ card.set }}</p>
+      <a  class="btn btn-primary">View Details</a>
+    </div>
+  </div>
+</div>
+<div class="infinite-scroll"></div>
