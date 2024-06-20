@@ -1,11 +1,12 @@
-<input type="text" class="form-control mb-3" placeholder="Search cards...">
-<div class="card-columns">
-  <div class="card" *ngFor="let card of cards">
-    <div class="card-body">
-      <h5 class="card-title">{{ card.name }}</h5>
-      <p class="card-text">{{ card.set }}</p>
-      <a  class="btn btn-primary">View Details</a>
+<input type="text" class="form-control mb-3" (input)="onInput($event)" placeholder="Search cards...">
+<div class="card-rows">
+    <div class="card" *ngFor="let card of cards">
+        <img class="card-img-top" [src]="card.images.small" alt="{{ card.name }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ card.name }}</h5>
+            <p class="card-text">{{ card.set.name }}</p>
+            <a [routerLink]="['/cards', card.id]" class="btn btn-primary">View Details</a>
+        </div>
     </div>
-  </div>
 </div>
-<div class="infinite-scroll"></div>
+<div class="infinite-scroll" (scrolled)="onScroll()"></div>

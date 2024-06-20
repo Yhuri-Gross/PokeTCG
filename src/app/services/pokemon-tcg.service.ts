@@ -12,18 +12,18 @@ export class PokemonTcgService {
     private http:HttpClient
   ) { }
 
-  getCards(): Observable<any>{
-    console.log(this.http.get<any>(`${this.url}/cards`));
-    return this.http.get<any>(`${this.url}/cards`)
+  getCards(page: number, searchTerm: string): Observable<any> {
+    return this.http.get(`${this.url}/cards`, {
+      params: {
+        pageSize: '8',
+        page: page.toString(),
+        name: searchTerm
+      }
+    });
   }
-
   getCardId(id: number): Observable<any>{
     console.log(this.http.get<any>(`${this.url}/cards/${id}`));
     return this.http.get<any>(`${this.url}/cards/${id}`)
-  }
-
-  searchCards(query: string, page: number): Observable<any>{
-    return this.http.get<any>(`${this.url}/card?name=${query}&page=${page}`)
   }
 
   getSets(): Observable<any>{
