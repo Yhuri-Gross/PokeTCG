@@ -21,7 +21,7 @@ export class PokemonTcgService {
       }
     });
   }
-  getCardId(id: number): Observable<any>{
+  getCardId(id: string | null): Observable<any>{
     console.log(this.http.get<any>(`${this.url}/cards/${id}`));
     return this.http.get<any>(`${this.url}/cards/${id}`)
   }
