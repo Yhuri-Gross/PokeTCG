@@ -23,7 +23,7 @@ export class SetsListComponent {
   }
 
   loadSets(): void {
-    this.pokemonTcgService.getSets().subscribe(resp => {
+    this.pokemonTcgService.getSets(this.page, this.searchTerm).subscribe(resp => {
       this.sets = resp.data;
       console.log(this.sets);
     });

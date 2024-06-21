@@ -26,8 +26,19 @@ export class PokemonTcgService {
     return this.http.get<any>(`${this.url}/cards/${id}`)
   }
 
-  getSets(): Observable<any>{
+  getSets(page: number, searchTerm: string): Observable<any>{
     console.log(this.http.get<any>(`${this.url}/sets`));
-    return this.http.get<any>(`${this.url}/sets`)
+    return this.http.get<any>(`${this.url}/sets`, {
+      params: {
+        pageSize: '8',
+        page: page.toString(),
+        name: searchTerm
+      }
+    })
+  }
+
+  getSetId(id: string | null): Observable<any>{
+    console.log(this.http.get<any>(`${this.url}/sets/${id}`));
+    return this.http.get<any>(`${this.url}/sets/${id}`)
   }
 }
