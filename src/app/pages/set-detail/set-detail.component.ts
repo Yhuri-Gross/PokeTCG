@@ -19,8 +19,6 @@ export class SetDetailComponent {
   ngOnInit(): void {
     const setId = this.route.snapshot.paramMap.get('id');
     this.pokemonTcgService.getSetId(setId).subscribe(resp => {
-      console.log("set iddddd");
-      console.log(resp.data);
       this.set = resp.data;
     });
   }

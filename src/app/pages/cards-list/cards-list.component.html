@@ -1,12 +1,9 @@
 <input type="text" class="form-control mb-3" (input)="onInput($event)" placeholder="Search cards...">
-<div class="card-rows">
-    <div class="card" *ngFor="let card of cards">
-        <img class="card-img-top" [src]="card.images.small" alt="{{ card.name }}">
-        <div class="card-body">
-            <h5 class="card-title">{{ card.name }}</h5>
-            <p class="card-text">{{ card.set.name }}</p>
-            <a [routerLink]="['/cards', card.id]" class="btn btn-primary">View Details</a>
+<div class="container">
+    <div class="card-rows">
+        <div class="card" *ngFor="let card of cards" [routerLink]="['/cards', card.id]">
+            <img class="card-img-top" [src]="card.images.small" alt="{{ card.name }}">
         </div>
     </div>
+    <div class="infinite-scroll" (scrolled)="onScroll()"></div>
 </div>
-<div class="infinite-scroll" (scrolled)="onScroll()"></div>

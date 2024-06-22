@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PokemonTcgService } from '../../services/pokemon-tcg.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Card } from '../../models/card.model';
 
 @Component({
   selector: 'app-card-detail',
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CardDetailComponent {
 
-  card: any;
+  card: Card | undefined;
 
   constructor(private route: ActivatedRoute, private pokemonTcgService: PokemonTcgService) { }
 
