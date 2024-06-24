@@ -1,5 +1,24 @@
 <div *ngIf="card">
-    <img [src]="card.images.small" alt="{{ card.name }}">
-    <h1>{{ card.name }}</h1>
+  <img [src]="card.images.small" alt="{{ card.name }}">
+  <h1>{{ card.name }}</h1>
+
+  <div>
+    <h5>Subtipos</h5>
+    <p>Subtipos: {{card.subtypes}}</p>
+    <p>Tipo de carta: {{card.supertype}}</p>
   </div>
-  
+
+  <div>
+    <h5>Habilidades</h5>
+    <p>{{card.rules}}</p>
+    <p>{{card.abilities}}</p>
+  </div>
+
+  <div>
+    <h5>Tipos</h5>
+    <p>{{card.hp}}</p>
+    <p>{{card.supertype}}</p>
+    <p>{{card.types}}</p>
+  </div>
+ 
+</div>

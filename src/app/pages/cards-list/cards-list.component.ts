@@ -47,4 +47,18 @@ export class CardsListComponent {
       this.loadCards();
     }
   }
+
+  onMouseMove(event: MouseEvent, card: any): void {
+    const cardElement = event.currentTarget as HTMLElement;
+    const rect = cardElement.getBoundingClientRect();
+    const x = event.clientX - rect.left - rect.width / 2;
+    const y = event.clientY - rect.top - rect.height / 2;
+    const rotateX = (y / rect.height) * 50;
+    const rotateY = (x / rect.width) * -50;
+    card.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  }
+
+  onMouseLeave(card: any): void {
+    card.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+  }
 }
