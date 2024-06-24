@@ -14,7 +14,7 @@ export class PokemonTcgService {
 
   getCards(page: number, searchTerm: string): Observable<any> {
     let params = new HttpParams()
-      .set('pageSize', '8')
+      .set('pageSize', '12')
       .set('page', page.toString());
 
     if (searchTerm && searchTerm.length >= 3) {
@@ -31,7 +31,7 @@ export class PokemonTcgService {
 
   getSets(page: number, searchTerm: string): Observable<any> {
     let params = new HttpParams()
-      .set('pageSize', '8')
+      .set('pageSize', '12')
       .set('page', page.toString());
 
     if (searchTerm && searchTerm.length >= 3) {

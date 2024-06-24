@@ -1,9 +1,11 @@
 <input type="text" class="form-control mb-3 mt-3 width-400" (input)="onInput($event)" placeholder="Search sets...">
-<div class="card-rows">
-    <div class="card" [routerLink]="['/sets', set.id]" *ngFor="let set of sets">
-        <img class="card-img-top" [src]="set.images.logo" alt="{{ set.name }}">
-        <div class="card-body">
-            <h5 class="card-title">{{ set.name }}</h5>
+<div class="container">
+    <div class="card-rows">
+        <div class="card" [routerLink]="['/sets', set.id]" *ngFor="let set of sets">
+            <img class="card-img-top" [src]="set.images.logo" alt="{{ set.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ set.name }}</h5>
+            </div>
         </div>
     </div>
 </div>
