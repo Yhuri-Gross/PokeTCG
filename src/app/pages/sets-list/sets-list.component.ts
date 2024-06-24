@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PokemonTcgService } from '../../services/pokemon-tcg.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -8,13 +8,13 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './sets-list.component.html',
-  styleUrl: './sets-list.component.scss'
+  styleUrls: ['./sets-list.component.scss']
 })
-export class SetsListComponent {
+export class SetsListComponent implements OnInit {
   sets: any[] = [];
   searchTerm: string = '';
   page: number = 1;
-  pageSize: number = 20;
+  isLoading: boolean = false;
 
   constructor(private pokemonTcgService: PokemonTcgService) { }
 
@@ -23,26 +23,28 @@ export class SetsListComponent {
   }
 
   loadSets(): void {
-    this.pokemonTcgService.getSets(this.page, this.searchTerm).subscribe(resp => {
-      this.sets = resp.data;
-      console.log(this.sets);
+    if (this.isLoading) return;
+    this.isLoading = true;
+    this.pokemonTcgService.getSets(this.page, this.searchTerm).subscribe({
+      next: resp => this.sets = [...this.sets, ...resp.data],
+      error: err => console.error(err),
+      complete: () => this.isLoading = false
     });
   }
 
-  onScroll(): void {
-    this.page++;
-    this.loadSets();
-  }
-
-  onSearch(term: string): void {
-    this.searchTerm = term;
+  onInput(event: Event): void {
+    this.searchTerm = (event.target as HTMLInputElement).value;
     this.page = 1;
     this.sets = [];
     this.loadSets();
   }
 
-  onInput(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.onSearch(inputElement.value);
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 100) {
+      this.page++;
+      this.loadSets();
+    }
   }
 }

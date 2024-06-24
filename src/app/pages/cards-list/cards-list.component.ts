@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { PokemonTcgService } from '../../services/pokemon-tcg.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -14,7 +14,7 @@ export class CardsListComponent {
   cards: any[] = [];
   searchTerm: string = '';
   page: number = 1;
-  pageSize: number = 20;
+  isLoading: boolean = false;
 
   constructor(private pokemonTcgService: PokemonTcgService) { }
 
@@ -23,26 +23,28 @@ export class CardsListComponent {
   }
 
   loadCards(): void {
-    this.pokemonTcgService.getCards(this.page, this.searchTerm).subscribe(resp => {
-      this.cards = resp.data;
-      console.log(this.cards);
+    if (this.isLoading) return;
+    this.isLoading = true;
+    this.pokemonTcgService.getCards(this.page, this.searchTerm).subscribe({
+      next: resp => this.cards = [...this.cards, ...resp.data],
+      error: err => console.error(err),
+      complete: () => this.isLoading = false
     });
   }
 
-  onScroll(): void {
-    this.page++;
-    this.loadCards();
-  }
-
-  onSearch(term: string): void {
-    this.searchTerm = term;
+  onInput(event: Event): void {
+    this.searchTerm = (event.target as HTMLInputElement).value;
     this.page = 1;
     this.cards = [];
     this.loadCards();
   }
 
-  onInput(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.onSearch(inputElement.value);
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 100) {
+      this.page++;
+      this.loadCards();
+    }
   }
 }

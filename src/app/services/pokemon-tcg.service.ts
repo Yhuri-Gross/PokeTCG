@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -9,35 +9,38 @@ export class PokemonTcgService {
   url: string = 'https://api.pokemontcg.io/v2';
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
 
   getCards(page: number, searchTerm: string): Observable<any> {
-    return this.http.get(`${this.url}/cards`, {
-      params: {
-        pageSize: '8',
-        page: page.toString(),
-        name: searchTerm
-      }
-    });
+    let params = new HttpParams()
+      .set('pageSize', '8')
+      .set('page', page.toString());
+
+    if (searchTerm && searchTerm.length >= 3) {
+      params = params.set('q', `name:*${searchTerm}*`);
+    }
+    return this.http.get(`${this.url}/cards`, { params });
   }
-  getCardId(id: string | null): Observable<any>{
+
+
+  getCardId(id: string | null): Observable<any> {
     console.log(this.http.get<any>(`${this.url}/cards/${id}`));
     return this.http.get<any>(`${this.url}/cards/${id}`)
   }
 
-  getSets(page: number, searchTerm: string): Observable<any>{
-    console.log(this.http.get<any>(`${this.url}/sets`));
-    return this.http.get<any>(`${this.url}/sets`, {
-      params: {
-        pageSize: '8',
-        page: page.toString(),
-        name: searchTerm
-      }
-    })
+  getSets(page: number, searchTerm: string): Observable<any> {
+    let params = new HttpParams()
+      .set('pageSize', '8')
+      .set('page', page.toString());
+
+    if (searchTerm && searchTerm.length >= 3) {
+      params = params.set('q', `name:*${searchTerm}*`);
+    }
+    return this.http.get<any>(`${this.url}/sets`, { params });
   }
 
-  getSetId(id: string | null): Observable<any>{
+  getSetId(id: string | null): Observable<any> {
     console.log(this.http.get<any>(`${this.url}/sets/${id}`));
     return this.http.get<any>(`${this.url}/sets/${id}`)
   }
