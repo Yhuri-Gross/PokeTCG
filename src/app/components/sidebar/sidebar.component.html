@@ -1,6 +1,6 @@
 <nav class="nav flex-column">
-    <a class="nav-link">Perfil</a>
+    <a class="nav-link" *ngIf="authService.isLoggedIn()" routerLink="/profile">Perfil</a>
     <a class="nav-link active" routerLink="/cards">Cards</a>
     <a class="nav-link" routerLink="/sets">Sets</a>
-    <a class="nav-link" routerLink="/login">Sair</a>
+    <a class="nav-link cursor-pointer" (click)="logout()">Sair</a>
 </nav>

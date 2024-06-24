@@ -4,6 +4,7 @@ import { SetsListComponent } from './pages/sets-list/sets-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CardDetailComponent } from './pages/card-detail/card-detail.component';
 import { SetDetailComponent } from './pages/set-detail/set-detail.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -12,4 +13,5 @@ export const routes: Routes = [
     { path: 'sets', component:  SetsListComponent},
     { path: 'sets/:id', component: SetDetailComponent },
     { path: 'login', component:  LoginComponent},
+    { path: 'profile', component:  ProfileComponent},
 ];

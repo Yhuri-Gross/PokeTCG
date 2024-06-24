@@ -7,12 +7,13 @@ import { SetsListComponent } from './pages/sets-list/sets-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, SidebarComponent, HeaderComponent,
-     CardsListComponent, SetsListComponent, LoginComponent, CommonModule],
+     CardsListComponent, SetsListComponent, LoginComponent, CommonModule, ProfileComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
