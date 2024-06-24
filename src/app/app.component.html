@@ -1,9 +1,9 @@
-<app-header></app-header>
+<app-header *ngIf="!loginIsTrue"></app-header>
 <div class="container-fluid">
   <div class="row">
-    <app-sidebar class="col-md-2"></app-sidebar>
-      <main class="col-md-10 ml-sm-auto">
-        <router-outlet></router-outlet>
-      </main>
+    <app-sidebar *ngIf="!loginIsTrue" class="col-md-2"></app-sidebar>
+    <main class="col-md-10 ml-sm-auto">
+      <router-outlet></router-outlet>
+    </main>
   </div>
 </div>

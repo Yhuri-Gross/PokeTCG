@@ -5,12 +5,12 @@ import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-login',
-    standalone: true,
-    imports: [CommonModule, RouterModule, FormsModule],
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss'
-  })
+  selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
+})
 export class LoginComponent {
   username: string = '';
   password: string = '';
@@ -25,5 +25,9 @@ export class LoginComponent {
     } else {
       this.error = 'Invalid credentials';
     }
+  }
+
+  noLogin() {
+    this.router.navigate(['/cards']);
   }
 }
