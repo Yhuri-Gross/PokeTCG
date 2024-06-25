@@ -20,8 +20,6 @@ export class CardDetailComponent {
   ngOnInit(): void {
     const cardId = this.route.snapshot.paramMap.get('id');
     this.pokemonTcgService.getCardId(cardId).subscribe(resp => {
-      console.log("card iddddd");
-      console.log(resp.data);
       this.card = resp.data;
     });
   }

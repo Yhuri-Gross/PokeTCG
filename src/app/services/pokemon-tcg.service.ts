@@ -25,7 +25,6 @@ export class PokemonTcgService {
 
 
   getCardId(id: string | null): Observable<any> {
-    console.log(this.http.get<any>(`${this.url}/cards/${id}`));
     return this.http.get<any>(`${this.url}/cards/${id}`)
   }
 
@@ -41,7 +40,6 @@ export class PokemonTcgService {
   }
 
   getSetId(id: string | null): Observable<any> {
-    console.log(this.http.get<any>(`${this.url}/sets/${id}`));
     return this.http.get<any>(`${this.url}/sets/${id}`)
   }
 }

@@ -26,9 +26,6 @@
            <span class="type-pill" *ngFor="let resist of card.resistances"
            [ngClass]="getTypeClass(resist.type)">{{resist.type + "  " + resist.value}}</span>
         </p>
-        <p *ngIf="card.evolvesTo" >
-          <strong>Evoluções: </strong>
-          <span *ngFor="let evolve  of card.evolvesTo">{{evolve}}</span></p>
       </div>
     </div>
   </div>

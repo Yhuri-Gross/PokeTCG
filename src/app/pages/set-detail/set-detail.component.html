@@ -1,6 +1,22 @@
-<div *ngIf="set">
-    <img [src]="set.images.logo" alt="{{ set.name }}">
-    <h1>{{ set.name }}</h1>
-    <p>{{ set.text }}</p>
+<div class="container">
+  <div class="content" *ngIf="set">
+    <div class="container-card1">
+      <div class="sprite">
+        <img [src]="set.images.logo" alt="{{ set.name }}">
+        <h3 class="card-name-font">{{ set.name }}</h3>
+      </div>
+
+
+      <div class="info-card">
+        <p><strong>Data de lançamento:</strong> {{set.releaseDate}}</p>
+        <p *ngIf="set.series"><strong>Série:</strong> {{set.series}}</p>
+        <p *ngIf="set.total"><strong>Total:</strong> {{set.total}}</p>
+        <p *ngIf="set.legalities.unlimited"><strong>Legalidades:</strong> {{set.legalities.unlimited}}</p>
+        <p *ngIf="set.legalities.standard"><strong>Legalidades:</strong> {{set.legalities.standard}}</p>
+        <p *ngIf="set.legalities.expanded"><strong>Legalidades:</strong> {{set.legalities.expanded}}</p>
+
+      </div>
+    </div>
+
+
   </div>
-  

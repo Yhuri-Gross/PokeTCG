@@ -16,6 +16,7 @@ export class ProfileComponent {
     email: '',
     bio: '',
   };
+  successMessage = '';
 
   constructor(private authService: AuthService) {}
 
@@ -33,7 +34,7 @@ export class ProfileComponent {
   }
 
   saveProfile() {
-    this.authService.login(this.user.name, '');
-    console.log(this.user);
+    this.authService.updateUserName(this.user.name);
+    this.successMessage = 'Perfil salvo com sucesso!';
   }
 }

@@ -31,4 +31,10 @@ export class AuthService {
   getUser(): any {
     return this.user;
   }
+
+  updateUserName(username: string) {
+    if (this.isAuthenticated) {
+      this.user = username;
+    }
+  }
 }
