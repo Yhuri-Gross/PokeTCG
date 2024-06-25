@@ -25,4 +25,8 @@ export class CardDetailComponent {
       this.card = resp.data;
     });
   }
+
+  getTypeClass(type: string): string {
+    return `type-${type.toLowerCase()}`;
+  }
 }

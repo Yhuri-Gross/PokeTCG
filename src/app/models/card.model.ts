@@ -5,12 +5,10 @@ export interface Card {
     name: string;
     supertype: string;
     subtypes: string[];
-    hp?: string;
     types?: string[];
     evolesFrom?: string;
     evolvesTo?: string[];
     rules?: string[];
-    abilities?: IAbility[];
     attacks?: IAttack[];
     weaknesses?: IWeakness[];
     resistances?: IResistance[];
@@ -31,12 +29,6 @@ export interface Card {
         small: string,
         large: string
     };
-}
-
-export interface IAbility {
-    name: string;
-    text: string;
-    type: string;
 }
 
 export interface IAttack {

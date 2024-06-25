@@ -1,24 +1,37 @@
-<div *ngIf="card">
-  <img [src]="card.images.small" alt="{{ card.name }}">
-  <h1>{{ card.name }}</h1>
+<div class="container">
+  <div class="content" *ngIf="card">
+    <div class="container-card1">
+      <div class="sprite">
+        <img [src]="card.images.small" alt="{{ card.name }}">
+        <h3 class="card-name-font">{{ card.name }}</h3>
+      </div>
 
-  <div>
-    <h5>Subtipos</h5>
-    <p>Subtipos: {{card.subtypes}}</p>
-    <p>Tipo de carta: {{card.supertype}}</p>
+
+      <div class="info-card">
+        <p><strong>Artista:</strong> {{card.artist}}</p>
+        <p *ngIf="card.rarity"><strong>Raridade:</strong> {{card.rarity}}</p>
+        <p *ngIf="card.flavorText"><strong>Descrição:</strong> {{card.flavorText}}</p>
+        <p>
+          <strong>Tipos: </strong>
+           <span  class="type-pill" *ngFor="let type of card.types"
+            [ngClass]="getTypeClass(type)">{{type}}</span>
+        </p>
+        <p>
+          <strong>Fraquezas: </strong>
+           <span class="type-pill" *ngFor="let weak of card.weaknesses" 
+           [ngClass]="getTypeClass(weak.type)">{{weak.type + "  " + weak.value}}</span>
+        </p>
+        <p *ngIf="card.resistances">
+          <strong>Resistencias: </strong>
+           <span class="type-pill" *ngFor="let resist of card.resistances"
+           [ngClass]="getTypeClass(resist.type)">{{resist.type + "  " + resist.value}}</span>
+        </p>
+        <p *ngIf="card.evolvesTo" >
+          <strong>Evoluções: </strong>
+          <span *ngFor="let evolve  of card.evolvesTo">{{evolve}}</span></p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <h5>Habilidades</h5>
-    <p>{{card.rules}}</p>
-    <p>{{card.abilities}}</p>
-  </div>
 
-  <div>
-    <h5>Tipos</h5>
-    <p>{{card.hp}}</p>
-    <p>{{card.supertype}}</p>
-    <p>{{card.types}}</p>
-  </div>
- 
 </div>

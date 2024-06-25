@@ -12,7 +12,6 @@
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Sombra sutil */
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -22,22 +21,25 @@
 
 .card:hover {
     transform: translateY(-5px);
-    /* Efeito de levantamento ao passar o mouse */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    /* Sombra mais pronunciada ao passar o mouse */
 }
 
 .card-img-top {
     width: 100%;
     height: 200px;
+    background-color: white;
 }
 
 .card-body {
     padding: 12px;
+    background-color: white;
+
 }
 
 .card-title {
     font-size: 16px;
     font-weight: bold;
     margin-top: 8px;
+    background-color: white;
+
 }
