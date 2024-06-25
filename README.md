@@ -1,6 +1,6 @@
 # Pokémon Dashboard
 
-Pokémon Dashboard é uma Single Page Application (SPA) construída com Angular 17, que consome a API Pokémon TCG para exibir dados sobre cards e sets de Pokémon. A aplicação apresenta um layout de dashboard com cabeçalho e menu lateral fixos, e contém páginas de listagem e detalhes dos cards e sets. A interface é responsiva e estilizada com Bootstrap, utilizando CSS3 e SASS/SCSS.
+Pokémon Dashboard é uma Single Page Application (SPA) construída com Angular 18, que consome a API Pokémon TCG para exibir dados sobre cards e sets de Pokémon. A aplicação apresenta um layout de dashboard com cabeçalho e menu lateral fixos, e contém páginas de listagem e detalhes dos cards e sets. A interface é responsiva e estilizada com Bootstrap, utilizando CSS3 e SASS/SCSS.
 
 
 
@@ -8,7 +8,7 @@ Pokémon Dashboard é uma Single Page Application (SPA) construída com Angular 
 
 Para executar este projeto localmente, siga estas etapas:
 
-1. Certifique-se de ter o Node.js versão 20 e o Angular CLI versão 18 instalados em seu ambiente de desenvolvimento.
+1. Certifique-se de ter o Node.js versão 20 e o Angular CLI versão 18 estão instalados em seu ambiente de desenvolvimento.
 2. Clone este repositório em sua máquina local.
 3. No diretório raiz do projeto, execute o seguinte comando para instalar as dependências:
 
